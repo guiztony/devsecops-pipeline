@@ -1,0 +1,24 @@
+name: DevSecOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      - name: Build de l'image Docker
+        run: |
+          docker build -t devsecops-app:${{ github.sha }} .
+          echo "✅ Image construite avec succès"
