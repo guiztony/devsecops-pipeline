@@ -1,7 +1,6 @@
 minikube-linux-amd64
 kubectl
 *.bin
-*.exe
 __pycache__/
 *.pyc
 .env
