@@ -17,13 +17,13 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v3
 
-      - name: Build de l'image Docker
+      - name: Build de l image Docker
         run: |
           docker build -t devsecops-app:${{ github.sha }} .
-          echo "✅ Image construite avec succès"
+          echo "Image construite avec succes"
 
-sast-scan:
-    name: Analyse SAST (SonarCloud)
+  sast-scan:
+    name: Analyse SAST SonarCloud
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -39,14 +39,14 @@ sast-scan:
           SONAR_HOST_URL: https://sonarcloud.io
 
   image-scan:
-    name: Scan Vulnerabilités Image (Trivy)
+    name: Scan Vulnerabilites Image Trivy
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Checkout du code
         uses: actions/checkout@v3
 
-      - name: Build de l'image pour le scan
+      - name: Build de l image pour le scan
         run: docker build -t devsecops-app:${{ github.sha }} .
 
       - name: Scan Trivy
