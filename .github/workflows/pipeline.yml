@@ -22,7 +22,7 @@ jobs:
           docker build -t devsecops-app:${{ github.sha }} .
           echo "✅ Image construite avec succès"
 
-  sast-scan:
+sast-scan:
     name: Analyse SAST (SonarCloud)
     runs-on: ubuntu-latest
     needs: build
@@ -33,10 +33,10 @@ jobs:
           fetch-depth: 0
 
       - name: Scan SonarCloud
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
 
   image-scan:
     name: Scan Vulnerabilités Image (Trivy)
