@@ -33,7 +33,11 @@ jobs:
           fetch-depth: 0
 
       - name: Scan SonarCloud
-        uses: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
+        with:
+          args: >
+            -Dsonar.organization=guiztony
+            -Dsonar.projectKey=guiztony_devsecops-pipeline
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
