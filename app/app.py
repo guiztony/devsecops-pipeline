@@ -2,6 +2,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
+# FAILLE 1 : Clé API en dur dans le code
+SECRET_API_KEY = "sk-prod-1234567890abcdef"
+DB_PASSWORD = "admin123"
+
 @app.route('/')
 def home():
     return "<h1>Hello, DevSecOps World!</h1>", 200
