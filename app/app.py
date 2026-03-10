@@ -1,10 +1,11 @@
 from flask import Flask
+import os
 
-app = Flask(__name__)
+app = Flask(_name_)
 
-# FAILLE 1 : Clé API en dur dans le code
-SECRET_API_KEY = "sk-prod-1234567890abcdef"
-DB_PASSWORD = "admin123"
+# CORRECTION : utilisation de variables d environnement
+SECRET_API_KEY = os.environ.get("SECRET_API_KEY")
+DB_PASSWORD = os.environ.get("DB_PASSWORD")
 
 @app.route('/')
 def home():
@@ -14,5 +15,5 @@ def home():
 def health():
     return {"status": "healthy"}, 200
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run(host='0.0.0.0', port=5000)
