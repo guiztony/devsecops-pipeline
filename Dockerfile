@@ -1,8 +1,5 @@
-FROM python:3.13-alpine
-
+FROM python:3.13-slim
 WORKDIR /app
-
-RUN apk update && apk upgrade --no-cache
 
 COPY app/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

@@ -1,6 +1,11 @@
 from flask import Flask
+import os
 
-app = Flask(__name__)
+app = Flask(_name_)
+
+# CORRECTION : utilisation de variables d environnement
+SECRET_API_KEY = os.environ.get("SECRET_API_KEY")
+DB_PASSWORD = os.environ.get("DB_PASSWORD")
 
 @app.route('/')
 def home():
@@ -10,5 +15,7 @@ def home():
 def health():
     return {"status": "healthy"}, 200
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run(host='0.0.0.0', port=5000)
+
+
