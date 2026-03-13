@@ -1,11 +1,10 @@
 from flask import Flask
-import os
 
 app = Flask(_name_)
 
-# CORRECTION : utilisation de variables d environnement
-SECRET_API_KEY = os.environ.get("SECRET_API_KEY")
-DB_PASSWORD = os.environ.get("DB_PASSWORD")
+# FAILLE : Clé API en dur dans le code
+SECRET_API_KEY = "sk-prod-1234567890abcdef"
+DB_PASSWORD = "admin123"
 
 @app.route('/')
 def home():
